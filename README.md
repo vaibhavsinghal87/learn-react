@@ -1,4 +1,5 @@
 # learn-react
+
 React learning series
 
 - React components are JavaScript functions that return markup
@@ -62,7 +63,7 @@ React learning series
 ---
 
 - For the initial render, React will use the appendChild() DOM API to put all the DOM nodes it has created on screen.
-For re-renders, React will apply the minimal necessary operations (calculated while rendering!) to make the DOM match the latest rendering output.
+  For re-renders, React will apply the minimal necessary operations (calculated while rendering!) to make the DOM match the latest rendering output.
 - React only changes the DOM nodes if there’s a difference between renders.
 - State variables might look like regular JavaScript variables that you can read and write to. However, state behaves more like a snapshot. Setting it does not change the state variable you already have, but instead triggers a re-render.
 - “Rendering” means that React is calling your component, which is a function. The JSX you return from that function is like a snapshot of the UI in time. Its props, event handlers, and local variables were all calculated using its state at the time of the render.
@@ -81,10 +82,6 @@ For re-renders, React will apply the minimal necessary operations (calculated wh
 
 ---
 
-
-
-
-
 - fill form with data from server - controlled vs uncontrolled forms
 - use react component library
 - add/delete app - todos app
@@ -92,3 +89,6 @@ For re-renders, React will apply the minimal necessary operations (calculated wh
 - interaction app between page elements
 - how components interact app
 - state management app
+- reset state examples - like cascading dropdowns, related to different component. how to reset one component state based on action in anoother component
+- click to show sections and hide other sections, similar to tabgroup, use a container Card to render different components dynamically. This can also be achieved using url.
+- component interaction guidelines, scenarios, rules
