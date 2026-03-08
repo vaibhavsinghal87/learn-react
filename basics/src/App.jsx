@@ -1,10 +1,14 @@
-import ReactConcepts from './building-blocks/ReactConcepts.jsx';
+import Samples from "./samples/Samples.jsx";
 
 function App() {
-
   return (
-    <ReactConcepts />
+    <>
+      <Samples />
+    </>
   );
+
+  // return <ReactConcepts />;
+
   // return (
   //   <Fragment>
   //     <Header />
