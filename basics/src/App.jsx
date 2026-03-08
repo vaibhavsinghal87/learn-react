@@ -1,13 +1,7 @@
-import Samples from "./samples/Samples.jsx";
+import ReactConcepts from "./building-blocks/ReactConcepts";
 
 function App() {
-  return (
-    <>
-      <Samples />
-    </>
-  );
-
-  // return <ReactConcepts />;
+  return <ReactConcepts />;
 
   // return (
   //   <Fragment>
