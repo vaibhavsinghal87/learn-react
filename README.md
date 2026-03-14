@@ -82,6 +82,32 @@ React learning series
 
 ---
 
+- Context lets the parent component make some information available to any component in the tree below it—no matter how deep it is—without passing it explicitly through props.
+
+- Reducers let you consolidate a component’s state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen.
+With this approach, a parent component with complex state manages it with a reducer. Other components anywhere deep in the tree can read its state via context. They can also dispatch actions to update that state.
+
+- React preserves a component’s state for as long as it’s being rendered at its position in the UI tree. If it gets removed, or a different component gets rendered at the same position, React discards its state.
+
+- As a rule of thumb, if you want to preserve the state between re-renders, the structure of your tree needs to “match up” from one render to another. If the structure is different, the state gets destroyed because React destroys state when it removes a component from the tree.
+
+---
+
+- When you want a component to “remember” some information, but you don’t want that information to trigger new renders, you can use a ref. Like state, refs are retained by React between re-renders. However, setting state re-renders a component. Changing a ref does not!
+
+- A ref is like a secret pocket of your component that React doesn’t track. For example, you can use refs to store timeout IDs, DOM elements, and other objects that don’t impact the component’s rendering output.
+
+- You can pass refs from parent component to child components just like any other prop.
+
+- Unlike event handlers, which let you handle particular events, Effects let you run some code after rendering.
+
+- Removing unnecessary Effects will make your code easier to follow, faster to run, and less error-prone.
+
+- Effects have a different lifecycle from components. Components may mount, update, or unmount. An Effect can only do two things: to start synchronizing something, and later to stop synchronizing it. This cycle can happen multiple times if your Effect depends on props and state that change over time.
+
+- Code inside Effect Events isn’t reactive, so changing the theme no longer makes your Effect re-connect.
+
+---
 - fill form with data from server - controlled vs uncontrolled forms
 - use react component library
 - add/delete app - todos app
@@ -92,3 +118,18 @@ React learning series
 - reset state examples - like cascading dropdowns, related to different component. how to reset one component state based on action in anoother component
 - click to show sections and hide other sections, similar to tabgroup, use a container Card to render different components dynamically. This can also be achieved using url.
 - component interaction guidelines, scenarios, rules
+- understand virtual DOM
+- context vs prop - performance, use cases
+- Effects and cleanup functions
+- DOM manipulatoins allowed in react ?
+- when a component is removed from DOM wha happens to its variables and state. Does react automatically clean them up OR some cleanup is required?
+---
+
+When React triggers DOM updates -
+-
+
+React Perf Checklist -
+-
+
+
+---

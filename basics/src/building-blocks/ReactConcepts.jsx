@@ -5,6 +5,7 @@ import App from "./components/lifting-state-up/App";
 import PackingList from "./components/packing-list/PackingList";
 import People from "./components/people/People";
 import Array from "./components/update-array-in-state/Array";
+import UseRef from "./components/use-ref/UseRef";
 
 export default function ReactConcepts() {
   return (
@@ -20,6 +21,8 @@ export default function ReactConcepts() {
       <App />
       <hr />
       <Array />
+      <hr />
+      <UseRef />
     </>
   );
 }
