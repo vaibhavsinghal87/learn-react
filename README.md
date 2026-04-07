@@ -85,7 +85,7 @@ React learning series
 - Context lets the parent component make some information available to any component in the tree below it—no matter how deep it is—without passing it explicitly through props.
 
 - Reducers let you consolidate a component’s state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen.
-With this approach, a parent component with complex state manages it with a reducer. Other components anywhere deep in the tree can read its state via context. They can also dispatch actions to update that state.
+  With this approach, a parent component with complex state manages it with a reducer. Other components anywhere deep in the tree can read its state via context. They can also dispatch actions to update that state.
 
 - React preserves a component’s state for as long as it’s being rendered at its position in the UI tree. If it gets removed, or a different component gets rendered at the same position, React discards its state.
 
@@ -108,6 +108,7 @@ With this approach, a parent component with complex state manages it with a redu
 - Code inside Effect Events isn’t reactive, so changing the theme no longer makes your Effect re-connect.
 
 ---
+
 - fill form with data from server - controlled vs uncontrolled forms
 - use react component library
 - add/delete app - todos app
@@ -123,13 +124,62 @@ With this approach, a parent component with complex state manages it with a redu
 - Effects and cleanup functions
 - DOM manipulatoins allowed in react ?
 - when a component is removed from DOM wha happens to its variables and state. Does react automatically clean them up OR some cleanup is required?
----
-
-When React triggers DOM updates -
--
-
-React Perf Checklist -
--
-
+- react component code organization patterns
 
 ---
+
+## When React triggers DOM updates -
+
+## React Perf Checklist -
+
+---
+
+## Rules of React -
+
+- Use `props` to pass data from `Parent to child`. Similar to @Input in Angular
+- `Props` can be used to pass values, object, functions and even JSX
+- `Props` serve same role as arguments serve for function
+- `Props` can also be assined default values
+- `Props` are not static. They change over time
+- Child should not alter parent `props`
+- children prop is similar to ng-content in Angular. You will often use the children prop for visual wrappers: panels, grids, etc.
+- React uses one way data flow
+- React component is a JavaScript function that you can sprinkle with markup.
+- Functions can be called from inside JSX as component is not called again and again.
+- Acomponent can return null if u dont want to render anything. This is not a good practice
+- Best practices for rendering HTML/markup if there are a lot of conditions in JSX?
+- JSX elements directly inside a map() call always need keys!
+- Keys tell React which array item each component corresponds to, so that it can match them up later. This becomes important if your array items can move (e.g. due to sorting), get inserted, or get deleted. A well-chosen key helps React infer what exactly has happened, and make the correct updates to the DOM tree. Rather than generating keys on the fly, you should include them in your data
+- Keys-
+  - Dont use array index as keys
+  - Keys must not change. Dont generate keys while rendering
+  - Keys are not passed as props to component
+  - Keys must be unique among siblings
+- React assumes that every component you write is a pure function. This means that React components you write must always return the same JSX given the same inputs
+- Components should only return their JSX, and not change any objects or variables that existed before rendering—that would make them impure!
+- Components can also be rendered conditionally based on javascript condition. There is no ngIf alike in React
+- Setting state requests a new re-render, but does not change it in the already running code.
+- Always use a updater function when setting state
+- Patterns to move state out of a component - Does Tanstack provides anything for same
+- Hooks can be called at the top level only. Cant be called inside any function
+- State is local to a component instance on the screen. In other words, if you render the same component twice, each copy will have completely isolated state! Changing one of them will not affect the other.
+- Parent component can't change `state` of a child
+- If any component updates state React triggers a re-render for that component only. This process is recursive: if the updated component returns some other component, React will render that component next, and if that component also returns something, it will render that component next, and so on. The process will continue until there are no more nested components and React knows exactly what should be displayed on screen.
+- React only changes the DOM nodes if there’s a difference between renders.
+- React does not touch the DOM if the rendering result is the same as last time
+- Use StrictMode
+- State seters can be passed as props to child component
+- A state variable’s value never changes within a render, even if its event handler’s code is asynchronous.
+- CRUD app
+- Component creation guidelines and best practices for creating React components and data sharing betwene them. Check eslint rules also
+- How to share state with distant components to avid prop drilling - Use Context
+- State update logics to be extracted in a reducer
+- Controlled vs Uncontrolled components
+- State gets destroyed when a component gets destroyed
+- Task App
+- useState and useReducer are equivalent
+- You don’t have to use reducers for everything: feel free to mix and match! You can even useState and useReducer in the same component.
+- How to access DOM in React - useRef
+- useRef is similar to ViewChild
+- useImperativeHandle
+- caching API calls, when components revisited
