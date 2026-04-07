@@ -1,6 +1,7 @@
-import "./coin.css";
+import "./Coin.css";
 
 function Coin({ coin }) {
+  console.log("coin rendered");
   return (
     <div className="coin" key={coin.id}>
       <img src={coin.image} alt={coin.name} />
