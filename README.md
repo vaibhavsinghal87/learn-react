@@ -183,3 +183,4 @@ React learning series
 - useRef is similar to ViewChild
 - useImperativeHandle
 - caching API calls, when components revisited
+- passing data from one page to another - can we use route data like in angular

@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router";
 import "./App.css";
-import Coin from "./components/coin-card/Coin";
-import Limit from "./components/dropdown/Limit";
-import Filter from "./components/filter/Filter";
+
+import Header from "./components/header/Header";
+import About from "./pages/about/About";
+import CoinDetailsPage from "./pages/coin-details/coin-details";
+import Home from "./pages/home/Home";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -32,32 +35,28 @@ function App() {
     fetchCryptoData();
   }, [limit]);
 
-  const loadingMessage = "Loading crypto data...";
-  const filteredCryptoData = cryptoData.filter(
-    (crypto) =>
-      crypto.name.toLowerCase().includes(filter.toLowerCase()) ||
-      crypto.symbol.toLowerCase().includes(filter.toLowerCase()),
-  );
-
   return (
     <>
-      <section id="center">
-        <h1 className="heading">Crypto Dash</h1>
-        <div className="control-panel">
-          <Filter filter={filter} onFilterChange={setFilter} />
-          <Limit limit={limit} onLimitChange={setLimit} />
-        </div>
-
-        {loading && <p>{loadingMessage}</p>}
-        {error && <p>{error}</p>}
-        {!loading && !error && (
-          <div className="coins-holder">
-            {filteredCryptoData.map((crypto) => {
-              return <Coin key={crypto.id} coin={crypto} />;
-            })}
-          </div>
-        )}
-      </section>
+      <Header />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              cryptoData={cryptoData}
+              filter={filter}
+              setFilter={setFilter}
+              limit={limit}
+              setLimit={setLimit}
+              loading={loading}
+              error={error}
+            />
+          }
+        />
+        <Route path="/about" element={<About />} />
+        <Route path="/coin/:id" element={<CoinDetailsPage />} />
+        <Route path="*" element={<h1>404 Not Found</h1>} />
+      </Routes>
     </>
   );
 }
