@@ -1,4 +1,6 @@
-export const chartOptions = {
+import type { ChartOptions } from "chart.js";
+
+export const chartOptions: ChartOptions<"line"> = {
   responsive: true,
   plugins: {
     legend: { display: false },
@@ -11,12 +13,19 @@ export const chartOptions = {
         unit: "day",
       },
       ticks: {
-        autoskip: true,
+        autoSkip: true,
       },
     },
     y: {
       ticks: {
-        callback: (value) => `$${value.toLocaleString()}`,
+        callback: function (value: string | number) {
+          const numericValue =
+            typeof value === "number" ? value : Number.parseFloat(value);
+
+          return Number.isNaN(numericValue)
+            ? `${value}`
+            : `$${numericValue.toLocaleString()}`;
+        },
       },
     },
   },

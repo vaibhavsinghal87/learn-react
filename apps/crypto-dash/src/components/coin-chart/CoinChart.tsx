@@ -12,6 +12,7 @@ import "chartjs-adapter-date-fns";
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { chartOptions } from "./chart.config";
+import type { CoinChartData, CoinChartResponse } from "../../types/crypto";
 
 ChartJS.register(
   CategoryScale,
@@ -25,18 +26,27 @@ ChartJS.register(
 
 const API_URL = import.meta.env.VITE_COIN_DETAILS_URL;
 
-function CoinChart({ coinId }) {
-  const [chartData, setChartData] = useState(null);
+interface CoinChartProps {
+  coinId: string;
+}
+
+function CoinChart({ coinId }: CoinChartProps) {
+  const [chartData, setChartData] = useState<CoinChartData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchChartData = async () => {
+      setLoading(true);
+      setError("");
       try {
         const url = `${API_URL}${coinId}/market_chart?vs_currency=usd&days=7`;
         const response = await fetch(url);
-        const data = await response.json();
-        const prices = data.prices.map((price) => ({
+        if (!response.ok) {
+          throw new Error("Failed to fetch chart data");
+        }
+        const data: CoinChartResponse = await response.json();
+        const prices = data.prices.map((price: [number, number]) => ({
           x: price[0],
           y: price[1],
         }));
@@ -54,8 +64,9 @@ function CoinChart({ coinId }) {
           ],
         });
       } catch (error) {
-        setError("Failed to fetch chart data");
-        console.error("Error fetching chart data:", error);
+        setError(
+          error instanceof Error ? error.message : "Failed to fetch chart data",
+        );
       } finally {
         setLoading(false);
       }
@@ -68,9 +79,9 @@ function CoinChart({ coinId }) {
       {loading && <p>Loading chart data...</p>}
       {error && <p>{error}</p>}
       {!loading && !error && chartData && (
-        <p>
+        <div>
           <Line data={chartData} options={{ ...chartOptions }} />
-        </p>
+        </div>
       )}
     </div>
   );

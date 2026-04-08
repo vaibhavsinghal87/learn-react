@@ -1,8 +1,12 @@
 import { Link } from "react-router";
 import "./Coin.css";
+import type { CryptoCoin } from "../../types/crypto";
 
-function Coin({ coin }) {
-  console.log("coin rendered");
+interface CoinProps {
+  coin: CryptoCoin;
+}
+
+function Coin({ coin }: CoinProps) {
   return (
     <Link to={`/coin/${coin.id}`} className="coin-link">
       <div className="coin" key={coin.id}>

@@ -1,6 +1,18 @@
+import type { Dispatch, SetStateAction } from "react";
 import Coin from "../../components/coin-card/Coin";
 import Limit from "../../components/dropdown/Limit";
 import Filter from "../../components/filter/Filter";
+import type { CryptoCoin, LimitOption } from "../../types/crypto";
+
+interface HomePageProps {
+  cryptoData: CryptoCoin[];
+  filter: string;
+  setFilter: Dispatch<SetStateAction<string>>;
+  limit: LimitOption;
+  setLimit: Dispatch<SetStateAction<LimitOption>>;
+  loading: boolean;
+  error: string;
+}
 
 function HomePage({
   cryptoData,
@@ -10,9 +22,9 @@ function HomePage({
   setLimit,
   loading,
   error,
-}) {
+}: HomePageProps) {
   const filteredCryptoData = cryptoData.filter(
-    (crypto) =>
+    (crypto: CryptoCoin) =>
       crypto.name.toLowerCase().includes(filter.toLowerCase()) ||
       crypto.symbol.toLowerCase().includes(filter.toLowerCase()),
   );
@@ -30,7 +42,7 @@ function HomePage({
       {error && <p>{error}</p>}
       {!loading && !error && (
         <div className="coins-holder">
-          {filteredCryptoData.map((crypto) => {
+          {filteredCryptoData.map((crypto: CryptoCoin) => {
             return <Coin key={crypto.id} coin={crypto} />;
           })}
         </div>

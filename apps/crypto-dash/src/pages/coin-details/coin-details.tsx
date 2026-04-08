@@ -1,26 +1,40 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import CoinChart from "../../components/coin-chart/CoinChart";
+import type { CoinDetails } from "../../types/crypto";
 
 const API_URL = import.meta.env.VITE_COIN_DETAILS_URL;
 
 function CoinDetailsPage() {
   const { id } = useParams();
-  const [coinDetails, setCoinDetails] = useState(null);
+  const [coinDetails, setCoinDetails] = useState<CoinDetails | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
+    if (!id) {
+      setError("Coin id is missing");
+      setLoading(false);
+      return;
+    }
+
     // fetch coin details using id
     const fetchCoinDetails = async () => {
+      setLoading(true);
+      setError("");
       try {
         const url = `${API_URL}${id}`;
         const response = await fetch(url);
-        const data = await response.json();
+        if (!response.ok) {
+          throw new Error("Failed to fetch coin details");
+        }
+        const data: CoinDetails = await response.json();
         setCoinDetails(data);
-      } catch (error: string | any) {
+      } catch (error) {
         // set error state
-        setError(error);
+        setError(
+          error instanceof Error ? error.message : "Failed to fetch coin details",
+        );
       } finally {
         // set loading to false
         setLoading(false);
@@ -54,7 +68,7 @@ function CoinDetailsPage() {
             24h Change:{" "}
             {coinDetails.market_data.price_change_percentage_24h.toFixed(2)}%
           </p>
-          <CoinChart coinId={id} />
+          <CoinChart coinId={coinDetails.id} />
         </div>
       )}
     </>
