@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from "react";
-import Coin from "../../components/coin-card/Coin";
 import Limit from "../../components/dropdown/Limit";
 import Filter from "../../components/filter/Filter";
+import Coin from "../../components/coin-card/Coin";
 import type { CryptoCoin, LimitOption } from "../../types/crypto";
 
 interface HomePageProps {
