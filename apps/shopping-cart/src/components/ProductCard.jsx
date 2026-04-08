@@ -1,4 +1,13 @@
-function ProductCard({ product }) {
+import { useProductContext } from "../context/ProductContext";
+
+function ProductCard({ productId }) {
+  const { products } = useProductContext();
+  const product = products.find((item) => item.id === productId);
+
+  if (!product) {
+    return null;
+  }
+
   return (
     <div className="bg-white rounded-lg shadow p-4 flex flex-col">
       <img
