@@ -1,5 +1,4 @@
-import { NextResponse } from "next/server"
-
+// Vercel Serverless Function to serve mock product data
 const products = [
   {
     id: 1,
@@ -121,8 +120,20 @@ const products = [
     stock: 52,
     rating: 4.4,
   },
-]
+];
 
-export async function GET() {
-  return NextResponse.json(products)
+export default function handler(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
+  res.setHeader("Content-Type", "application/json");
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
+  if (req.method === "GET") {
+    return res.status(200).json(products);
+  }
+
+  return res.status(405).json({ error: "Method not allowed" });
 }
