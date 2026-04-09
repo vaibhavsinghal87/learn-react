@@ -22,7 +22,7 @@ export function ProductProvider({ children }) {
       setLoading(true);
       setError("");
       try {
-        const url = "/api/products.json";
+        const url = "/api/products";
         const response = await fetch(url);
         if (!response.ok) {
           throw new Error("Failed to fetch products data");
