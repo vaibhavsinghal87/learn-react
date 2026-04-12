@@ -1,0 +1,28 @@
+{
+  "react-libs\\react-router\\app\\routes\\home\\index.tsx": {
+    "filename": "index.tsx",
+    "path": "react-libs\\react-router\\app\\routes\\home\\index.tsx",
+    "version": "1.2",
+    "contextFile": "b7f82401-context.json",
+    "chunks": {
+      "7bcf4a": {
+        "user": "Vaibhav Singhal",
+        "model": "claude-sonnet-4@20250514",
+        "timestamp": 1776013447,
+        "platform": "VisualStudioCode",
+        "product": "AIPP",
+        "productVersion": "2.3.3",
+        "source": "chat",
+        "type": "insertCode",
+        "extraContext": {
+          "promptMessage": "282f9a54"
+        },
+        "hash": "dc5f4712",
+        "messageId": "system_104a5220-3691-11f1-8c2b-d76b80296074",
+        "codeBlockId": "system_104a5220-3691-11f1-8c2b-d76b80296074-Codeblock-2",
+        "isActive": false
+      }
+    },
+    "lines": {}
+  }
+}

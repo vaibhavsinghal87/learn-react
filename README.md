@@ -171,6 +171,7 @@ React learning series
 - State seters can be passed as props to child component
 - A state variable’s value never changes within a render, even if its event handler’s code is asynchronous.
 - CRUD app
+- upload image and share app
 - Component creation guidelines and best practices for creating React components and data sharing betwene them. Check eslint rules also
 - How to share state with distant components to avid prop drilling - Use Context
 - State update logics to be extracted in a reducer

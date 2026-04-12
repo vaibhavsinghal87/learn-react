@@ -1,0 +1,15 @@
+{
+  "filename": "index.tsx",
+  "path": "react-libs\\react-router\\app\\routes\\home\\index.tsx",
+  "version": "1.1",
+  "files": {},
+  "promptMessage": {
+    "282f9a54": {
+      "value": "unable to install npm plugin. check error interminal"
+    }
+  },
+  "localPrompts": {},
+  "remotePrompts": {},
+  "figma": {},
+  "jira": {}
+}
