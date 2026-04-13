@@ -11,10 +11,10 @@ export default [
   // prefix routes - adds a common url only, no UI
   ...prefix("posts", [
     index("./routes/posts/index.tsx"),
-    // layout route with nested dynamic segment route - adds common UI only, no url
+    // layout route with nested dynamic segment route - adds common UI wrapper only, no url
     layout("./routes/posts/layout.tsx", [
       // dynamic segment route
-      route("/:id/details", "./routes/posts/details.tsx"),
+      route(":id/details", "./routes/posts/details.tsx"),
     ]),
   ]),
   route("about", "./routes/about/index.tsx"),

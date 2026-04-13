@@ -8,6 +8,10 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   return product;
 }
 
+export function HydrateFallback() {
+  return <p>Loading Post...</p>;
+}
+
 function PostDetailsPage({ loaderData, params }: Route.ComponentProps) {
   console.log("Post details page - ", loaderData);
   return <h1>Post Details Page - {params.id}</h1>;
