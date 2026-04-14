@@ -1,8 +1,3 @@
 {
-  "buildCommand": "react-router build",
-  "outputDirectory": "build/client",
-  "devCommand": "react-router dev",
-  "env": {
-    "NODE_ENV": "production"
-  }
+  "devCommand": "react-router dev"
 }
