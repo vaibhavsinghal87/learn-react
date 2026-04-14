@@ -1,8 +1,0 @@
-{
-  "buildCommand": "cd react-libs/react-router && npm run build",
-  "outputDirectory": "react-libs/react-router/build/client",
-  "devCommand": "cd react-libs/react-router && npm run dev",
-  "rewrites": [
-    { "source": "/((?!api).*)", "destination": "/index.html" }
-  ]
-}
