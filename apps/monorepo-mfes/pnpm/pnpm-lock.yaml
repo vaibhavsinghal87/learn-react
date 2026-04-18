@@ -10,6 +10,9 @@ importers:
 
   apps/admin:
     dependencies:
+      '@foundation/core-lib':
+        specifier: workspace:*
+        version: link:../../packages/core-lib
       react:
         specifier: ^19.2.4
         version: 19.2.5

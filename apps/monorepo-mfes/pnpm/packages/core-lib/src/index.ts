@@ -1,1 +1,2 @@
-export { default as UIButton } from "./components/button/Button";
+export * from "./components/button";
+export * from "./components/mui";
