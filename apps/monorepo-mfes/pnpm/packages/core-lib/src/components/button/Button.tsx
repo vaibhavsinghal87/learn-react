@@ -1,5 +1,13 @@
 import Button from "@mui/material/Button";
+import { type ButtonProps } from "./Button.interface";
 
 export default function UIButton() {
-  return <Button variant="contained">Click Me!!!</Button>;
+  const style: ButtonProps = {
+    className: "style",
+  };
+  return (
+    <Button variant="contained" className={style.className}>
+      Click Me!!!
+    </Button>
+  );
 }
