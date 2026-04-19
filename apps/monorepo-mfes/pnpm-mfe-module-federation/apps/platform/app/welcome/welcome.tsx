@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const Remote = lazy(
   // @ts-ignore
-  async () => import("remote/remote-app"),
+  async () => import("mf_admin/admin-app"),
 );
 
 export function Welcome() {

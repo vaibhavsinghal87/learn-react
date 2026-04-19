@@ -1,6 +1,7 @@
 import { MF_SHARED_LIBS } from "./shared";
 
-const isDev = import.meta.env.DEV;
+// Use process.env.NODE_ENV instead of import.meta.env.DEV during config loading
+const isDev = process.env.NODE_ENV !== "production";
 
 // this is host config, separate out static shell config from this
 export const STATIC_REMOTES_CONFIG = {
