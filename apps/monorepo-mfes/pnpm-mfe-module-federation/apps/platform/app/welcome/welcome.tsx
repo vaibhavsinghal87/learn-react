@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { Link } from "react-router";
 
 const Remote = lazy(
   // @ts-ignore
@@ -11,6 +12,7 @@ export function Welcome() {
       <Suspense fallback="loading...">
         <Remote />
       </Suspense>
+      <Link to="analytics">Load Analytics module</Link>
     </>
   );
 }

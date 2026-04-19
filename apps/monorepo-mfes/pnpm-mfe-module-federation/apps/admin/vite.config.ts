@@ -10,7 +10,7 @@ export default defineConfig({
     reactRouter(),
     devtoolsJson(),
     federation({
-      name: "remote",
+      name: "mf_admin",
       filename: "remoteEntry.js",
       exposes: {
         "./remote-app": "./app/welcome/welcome.tsx",
