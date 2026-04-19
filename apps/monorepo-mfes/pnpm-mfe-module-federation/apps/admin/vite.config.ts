@@ -13,7 +13,7 @@ export default defineConfig({
       name: "mf_admin",
       filename: "remoteEntry.js",
       exposes: {
-        "./remote-app": "./app/welcome/welcome.tsx",
+        "./remote-app": "./app/components/AdminMFWrapper.tsx",
       },
       shared: {
         // react: {
