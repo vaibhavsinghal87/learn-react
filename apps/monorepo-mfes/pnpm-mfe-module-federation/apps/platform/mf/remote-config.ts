@@ -1,5 +1,3 @@
-import { MF_SHARED_LIBS } from "./shared";
-
 // Use process.env.NODE_ENV instead of import.meta.env.DEV during config loading
 const isDev = process.env.NODE_ENV !== "production";
 
@@ -17,9 +15,9 @@ export const STATIC_REMOTES_CONFIG = {
       shareScope: "default",
     },
   },
-  shared: {
-    ...MF_SHARED_LIBS,
-  },
+  // shared: {
+  //   // ...MF_COMMON_CONFIG.shared,
+  // },
 };
 
 export const DYNAMIC_REMOTES_CONFIG = [
